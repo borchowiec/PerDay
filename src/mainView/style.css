@@ -1,0 +1,66 @@
+.root {
+    -fx-font-family: Arial;
+    -fx-font-weight: 700;
+}
+
+.button {
+    -fx-background-color: #ff6d00;
+    -fx-border-width: 0;
+}
+
+.topBar {
+    -fx-background-color: #ff6d00;
+    -fx-padding: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
+}
+
+.elementsContainer {
+    -fx-padding: 20px 20px 0 0;
+}
+
+.element {
+    -fx-background-color: #fff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);
+    -fx-padding: 0 0 5px 0;
+}
+
+.topElementsBar {
+    -fx-background-color: #ff9e40;
+    -fx-max-width: 999999px;
+}
+
+.titleInput {
+    -fx-background-color: #ff9e40;
+    -fx-border-width: 0;
+    -fx-pref-width: 999999px;
+}
+
+.counterBox {
+    -fx-max-width: 999999px;
+}
+
+.counterBox > .spinner, .counterBox > .text-field {
+    -fx-pref-width: 999999px;
+}
+
+.counterBox > .date-picker {
+    -fx-min-width: 150px;
+}
+
+.counterBox > .date-picker .button {
+    -fx-background-color: inherit;
+}
+
+.counterBox > .text-field {
+    -fx-background-color: white;
+    -fx-font-weight: normal;
+}
+
+.resultBox > .text-field {
+    -fx-background-color: white;
+}
+
+.removeButton {
+    -fx-background-color: #b71c1c;
+    -fx-font-weight: 900;
+}

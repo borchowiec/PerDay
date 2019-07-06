@@ -11,14 +11,14 @@
       <Button fx:id="addButton" mnemonicParsing="false" onAction="#addNewElement" text="+" textAlignment="CENTER" BorderPane.alignment="CENTER" />
    </bottom>
    <center>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
          <content>
-            <VBox fx:id="elementsContainer" prefHeight="200.0" prefWidth="100.0" />
+            <VBox fx:id="elementsContainer" prefHeight="200.0" prefWidth="100.0" spacing="20.0" styleClass="elementsContainer" />
          </content>
       </ScrollPane>
    </center>
    <top>
-      <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_RIGHT" styleClass="topBar" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#refresh" text="Refresh" />
          </children>
