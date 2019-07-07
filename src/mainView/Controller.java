@@ -21,6 +21,7 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         addButton.minWidthProperty().bind(mainContainer.widthProperty());
         elementsContainer.minWidthProperty().bind(mainContainer.widthProperty());
+        JsonHandler.load(elementsContainer.getChildren());
     }
 
     public void addNewElement() {

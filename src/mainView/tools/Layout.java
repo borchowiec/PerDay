@@ -7,6 +7,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Layout {
     public static VBox getNewElement() {
@@ -117,7 +118,7 @@ public class Layout {
 
     private static double countPerDay(int currentValue, int targetValue, LocalDate currentDate, LocalDate targetDate) {
         double result = targetValue - currentValue;
-        int days = targetDate.compareTo(currentDate) + 1;
+        long days = ChronoUnit.DAYS.between(currentDate, targetDate) + 1;
         return Math.round(result / days * 100.0) / 100.0;
     }
 }
