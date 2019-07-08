@@ -9,7 +9,6 @@ import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.*;
@@ -65,7 +64,7 @@ public class JsonHandler {
         JsonArray array = json.get("elements").getAsJsonArray();
 
         array.forEach(el -> {
-            elements.add(Layout.getNewElement(el.getAsJsonObject()));
+            elements.add(Layout.getNewElement(el.getAsJsonObject(), elements));
         });
     }
 }

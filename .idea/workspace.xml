@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PerDay/mainView/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PerDay/mainView/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PerDay/mainView/tools/JsonHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PerDay/mainView/tools/JsonHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PerDay/mainView/tools/Layout$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PerDay/mainView/tools/Layout$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PerDay/mainView/tools/Layout.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PerDay/mainView/tools/Layout.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mainView/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mainView/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mainView/tools/JsonHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mainView/tools/JsonHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mainView/tools/Layout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mainView/tools/Layout.java" afterDir="false" />
@@ -82,13 +76,27 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mainView/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+            <state relative-caret-position="273">
+              <caret line="32" column="72" lean-forward="true" selection-start-line="32" selection-start-column="72" selection-end-line="32" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/mainView/tools/Layout.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="122" column="77" selection-start-line="122" selection-start-column="77" selection-end-line="122" selection-end-column="77" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1652#2003#0" expanded="true" />
+                <element signature="e#2002#2003#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -97,20 +105,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mainView/tools/JsonHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
-              <caret line="67" column="41" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mainView/tools/Layout.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1700">
-              <caret line="103" column="10" selection-start-line="103" selection-start-column="10" selection-end-line="103" selection-end-column="10" />
+            <state relative-caret-position="137">
+              <caret line="59" column="28" lean-forward="true" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -138,6 +134,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>setUpCou</find>
+    </findStrings>
+  </component>
   <component name="FindManager">
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="false" />
@@ -156,9 +157,9 @@
         <option value="$PROJECT_DIR$/src/mainView/style.css" />
         <option value="$PROJECT_DIR$/src/mainView/mainView.fxml" />
         <option value="$PROJECT_DIR$/data.json" />
+        <option value="$PROJECT_DIR$/src/mainView/Controller.java" />
         <option value="$PROJECT_DIR$/src/mainView/tools/JsonHandler.java" />
         <option value="$PROJECT_DIR$/src/mainView/tools/Layout.java" />
-        <option value="$PROJECT_DIR$/src/mainView/Controller.java" />
       </list>
     </option>
   </component>
@@ -336,12 +337,12 @@
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1562401213160" duration="9839000" />
       <workItem from="1562486930406" duration="5181000" />
-      <workItem from="1562567575396" duration="655000" />
+      <workItem from="1562567575396" duration="1239000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16977000" />
+    <option name="totallyTimeSpent" value="17561000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -370,7 +371,7 @@
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3286119" />
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="15" />
-      <window_info anchor="bottom" id="Terminal" order="16" weight="0.3286119" />
+      <window_info anchor="bottom" id="Terminal" order="16" visible="true" weight="0.3286119" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -403,16 +404,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainView/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -420,20 +411,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainView/tools/JsonHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/mainView/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1139">
-          <caret line="67" column="41" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
+        <state relative-caret-position="273">
+          <caret line="32" column="72" lean-forward="true" selection-start-line="32" selection-start-column="72" selection-end-line="32" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainView/tools/Layout.java">
+    <entry file="file://$PROJECT_DIR$/src/mainView/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1700">
-          <caret line="103" column="10" selection-start-line="103" selection-start-column="10" selection-end-line="103" selection-end-column="10" />
+        <state relative-caret-position="340">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -448,12 +439,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mainView/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/mainView/tools/JsonHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+        <state relative-caret-position="137">
+          <caret line="59" column="28" lean-forward="true" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mainView/tools/Layout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="122" column="77" selection-start-line="122" selection-start-column="77" selection-end-line="122" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1652#2003#0" expanded="true" />
+            <element signature="e#2002#2003#0" expanded="true" />
           </folding>
         </state>
       </provider>

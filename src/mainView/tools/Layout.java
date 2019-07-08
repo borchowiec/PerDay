@@ -1,7 +1,9 @@
 package mainView.tools;
 
 import com.google.gson.JsonObject;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -17,12 +19,15 @@ public class Layout {
         return vBox;
     }
 
-    private static HBox getTopBar(String title) {
+    private static HBox getTopBar(String title, VBox mainBox, ObservableList<Node> elements) {
         TextField titleInput = new TextField(title);
         titleInput.getStyleClass().add("titleInput");
 
         Button removeButton = new Button("x");
         removeButton.getStyleClass().add("removeButton");
+        removeButton.setOnAction(event -> {
+            elements.remove(mainBox);
+        });
 
         HBox topBox = new HBox();
         topBox.getStyleClass().add("topElementsBar");
@@ -92,11 +97,11 @@ public class Layout {
         return resultBox;
     }
 
-    public static VBox getNewElement() {
+    public static VBox getNewElement(ObservableList<Node> elements) {
         VBox vBox = getMainBox();
 
         vBox.getChildren().addAll(
-                getTopBar("Untitled"),
+                getTopBar("Untitled", vBox, elements),
                 getCounterBox("Current value", 0, "currentSpinner"),
                 getCounterBox("Target value", 0, "targetSpinner"),
                 getTargetDateBox("Target date", LocalDate.now()),
@@ -106,7 +111,7 @@ public class Layout {
         return vBox;
     }
 
-    public static VBox getNewElement(JsonObject jsonData) {
+    public static VBox getNewElement(JsonObject jsonData, ObservableList<Node> elements) {
         VBox vBox = getMainBox();
 
         JsonObject jsonDate = jsonData.get("targetDate").getAsJsonObject();
@@ -115,7 +120,7 @@ public class Layout {
                 jsonDate.get("day").getAsInt());
 
         vBox.getChildren().addAll(
-                getTopBar(jsonData.get("title").getAsString()),
+                getTopBar(jsonData.get("title").getAsString(), vBox, elements),
                 getCounterBox(jsonData.get("currentValueLabel").getAsString(), jsonData.get("currentValue").getAsInt(), "currentSpinner"),
                 getCounterBox(jsonData.get("targetValueLabel").getAsString(), jsonData.get("targetValue").getAsInt(), "targetSpinner"),
                 getTargetDateBox(jsonData.get("targetDateLabel").getAsString(), date),

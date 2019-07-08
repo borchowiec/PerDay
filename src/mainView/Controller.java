@@ -30,7 +30,7 @@ public class Controller implements Initializable {
     }
 
     public void addNewElement() {
-        VBox el = Layout.getNewElement();
+        VBox el = Layout.getNewElement(elementsContainer.getChildren());
         elementsContainer.getChildren().add(el);
     }
 
