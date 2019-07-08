@@ -7,6 +7,7 @@ import javafx.scene.layout.VBox;
 import mainView.tools.JsonHandler;
 import mainView.tools.Layout;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +22,11 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         addButton.minWidthProperty().bind(mainContainer.widthProperty());
         elementsContainer.minWidthProperty().bind(mainContainer.widthProperty());
-        JsonHandler.load(elementsContainer.getChildren());
+        try {
+            JsonHandler.load(elementsContainer.getChildren());
+        } catch (FileNotFoundException e) {
+            System.out.println("file not found");
+        }
     }
 
     public void addNewElement() {

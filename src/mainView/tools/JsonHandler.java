@@ -57,4 +57,15 @@ public class JsonHandler {
         writer.write(json.toString());
         writer.close();
     }
+
+    public static void load(ObservableList<Node> elements) throws FileNotFoundException {
+        JsonParser parser = new JsonParser();
+        JsonElement jsonElement = parser.parse(new FileReader("data.json"));
+        JsonObject json = jsonElement.getAsJsonObject();
+        JsonArray array = json.get("elements").getAsJsonArray();
+
+        array.forEach(el -> {
+            elements.add(Layout.getNewElement(el.getAsJsonObject()));
+        });
+    }
 }

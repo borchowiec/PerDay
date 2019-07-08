@@ -1,5 +1,6 @@
 package mainView.tools;
 
+import com.google.gson.JsonObject;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -10,12 +11,14 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class Layout {
-    public static VBox getNewElement() {
-        VBox vBox =  new VBox(10);
+    private static VBox getMainBox() {
+        VBox vBox = new VBox(10);
         vBox.getStyleClass().add("element");
+        return vBox;
+    }
 
-        //topBox
-        TextField titleInput = new TextField("Untitled");
+    private static HBox getTopBar(String title) {
+        TextField titleInput = new TextField(title);
         titleInput.getStyleClass().add("titleInput");
 
         Button removeButton = new Button("x");
@@ -25,26 +28,25 @@ public class Layout {
         topBox.getStyleClass().add("topElementsBar");
         topBox.getChildren().addAll(titleInput, removeButton);
 
-        //currentBox
-        TextField currentInput = new TextField("Current value");
-        Spinner<Integer> currentSpinner = new Spinner<>();
-        setUpSpinner(currentSpinner);
+        return topBox;
+    }
 
-        HBox currentBox = new HBox();
-        currentBox.getStyleClass().add("counterBox");
-        currentBox.getChildren().addAll(currentInput, currentSpinner);
+    private static HBox getCounterBox(String label, int value, String classOfSpinner) {
+        TextField input = new TextField(label);
+        Spinner<Integer> spinner = new Spinner<>();
+        setUpSpinner(spinner);
+        spinner.getValueFactory().setValue(value);
+        spinner.getStyleClass().add(classOfSpinner);
 
-        //targetBox
-        TextField targetInput = new TextField("Target value");
-        Spinner<Integer> targetSpinner = new Spinner<>();
-        setUpSpinner(targetSpinner);
+        HBox box = new HBox();
+        box.getStyleClass().add("counterBox");
+        box.getChildren().addAll(input, spinner);
 
-        HBox targetBox = new HBox();
-        targetBox.getStyleClass().add("counterBox");
-        targetBox.getChildren().addAll(targetInput, targetSpinner);
+        return box;
+    }
 
-        //targetDateBox
-        TextField targetDateInput = new TextField("Target date");
+    private static HBox getTargetDateBox(String label, LocalDate date) {
+        TextField targetDateInput = new TextField(label);
         DatePicker targetDatePicker = new DatePicker();
         Callback<DatePicker, DateCell> dayCellFactory = (final DatePicker datePicker) -> new DateCell() {
             @Override
@@ -57,19 +59,26 @@ public class Layout {
             }
         };
         targetDatePicker.setDayCellFactory(dayCellFactory);
-        targetDatePicker.setValue(LocalDate.now());
+        if (date.isBefore(LocalDate.now()))
+            targetDatePicker.setValue(LocalDate.now());
+        else
+            targetDatePicker.setValue(date);
         targetDatePicker.setEditable(false);
 
         HBox targetDateBox = new HBox();
         targetDateBox.getStyleClass().add("counterBox");
         targetDateBox.getChildren().addAll(targetDateInput, targetDatePicker);
 
-        //resultBox
+        return targetDateBox;
+    }
+
+    public static HBox getResultBox(String thingName) {
         Label perDayLabel = new Label("0 ");
         perDayLabel.setMinWidth(100);
         perDayLabel.setAlignment(Pos.CENTER_RIGHT);
+        perDayLabel.getStyleClass().add("perDayLabel");
 
-        TextField thingNameInput = new TextField("Things");
+        TextField thingNameInput = new TextField(thingName);
         thingNameInput.setAlignment(Pos.CENTER_RIGHT);
 
         Label daysLabel = new Label("/ Day");
@@ -80,23 +89,39 @@ public class Layout {
         resultBox.setAlignment(Pos.CENTER);
         resultBox.getChildren().addAll(perDayLabel, thingNameInput, daysLabel);
 
-        currentSpinner.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue > targetSpinner.getValue())
-                targetSpinner.getValueFactory().setValue(newValue);
-            perDayLabel.setText(countPerDay(currentSpinner.getValue(), targetSpinner.getValue(), LocalDate.now(), targetDatePicker.getValue())+"");
-        });
+        return resultBox;
+    }
 
-        targetSpinner.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue < currentSpinner.getValue())
-                currentSpinner.getValueFactory().setValue(newValue);
-            perDayLabel.setText(countPerDay(currentSpinner.getValue(), targetSpinner.getValue(), LocalDate.now(), targetDatePicker.getValue())+"");
-        });
+    public static VBox getNewElement() {
+        VBox vBox = getMainBox();
 
-        targetDatePicker.valueProperty().addListener((observable, oldValue, newValue) -> {
-            perDayLabel.setText(countPerDay(currentSpinner.getValue(), targetSpinner.getValue(), LocalDate.now(), targetDatePicker.getValue())+"");
-        });
+        vBox.getChildren().addAll(
+                getTopBar("Untitled"),
+                getCounterBox("Current value", 0, "currentSpinner"),
+                getCounterBox("Target value", 0, "targetSpinner"),
+                getTargetDateBox("Target date", LocalDate.now()),
+                getResultBox("Things")
+        );
+        setUpCounting(vBox);
+        return vBox;
+    }
 
-        vBox.getChildren().addAll(topBox, currentBox, targetBox, targetDateBox, resultBox);
+    public static VBox getNewElement(JsonObject jsonData) {
+        VBox vBox = getMainBox();
+
+        JsonObject jsonDate = jsonData.get("targetDate").getAsJsonObject();
+        LocalDate date = LocalDate.of(jsonDate.get("year").getAsInt(),
+                jsonDate.get("month").getAsInt(),
+                jsonDate.get("day").getAsInt());
+
+        vBox.getChildren().addAll(
+                getTopBar(jsonData.get("title").getAsString()),
+                getCounterBox(jsonData.get("currentValueLabel").getAsString(), jsonData.get("currentValue").getAsInt(), "currentSpinner"),
+                getCounterBox(jsonData.get("targetValueLabel").getAsString(), jsonData.get("targetValue").getAsInt(), "targetSpinner"),
+                getTargetDateBox(jsonData.get("targetDateLabel").getAsString(), date),
+                getResultBox(jsonData.get("thingName").getAsString())
+        );
+        setUpCounting(vBox);
         return vBox;
     }
 
@@ -114,6 +139,31 @@ public class Layout {
                 spinner.increment(0);
             }
         });
+    }
+
+    private static void setUpCounting(VBox elementsBox) {
+        Spinner<Integer> currentSpinner = (Spinner<Integer>) elementsBox.lookup(".currentSpinner");
+        Spinner<Integer> targetSpinner = (Spinner<Integer>) elementsBox.lookup(".targetSpinner");
+        DatePicker targetDatePicker = (DatePicker) elementsBox.lookup(".date-picker");
+        Label perDayLabel = (Label) elementsBox.lookup(".perDayLabel");
+
+        currentSpinner.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue > targetSpinner.getValue())
+                targetSpinner.getValueFactory().setValue(newValue);
+            perDayLabel.setText(countPerDay(currentSpinner.getValue(), targetSpinner.getValue(), LocalDate.now(), targetDatePicker.getValue())+"");
+        });
+
+        targetSpinner.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue < currentSpinner.getValue())
+                currentSpinner.getValueFactory().setValue(newValue);
+            perDayLabel.setText(countPerDay(currentSpinner.getValue(), targetSpinner.getValue(), LocalDate.now(), targetDatePicker.getValue())+"");
+        });
+
+        targetDatePicker.valueProperty().addListener((observable, oldValue, newValue) -> {
+            perDayLabel.setText(countPerDay(currentSpinner.getValue(), targetSpinner.getValue(), LocalDate.now(), targetDatePicker.getValue())+"");
+        });
+
+        perDayLabel.setText(countPerDay(currentSpinner.getValue(), targetSpinner.getValue(), LocalDate.now(), targetDatePicker.getValue())+"");
     }
 
     private static double countPerDay(int currentValue, int targetValue, LocalDate currentDate, LocalDate targetDate) {
